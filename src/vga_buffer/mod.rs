@@ -1,17 +1,18 @@
 use core::fmt;
 use lazy_static::lazy_static;
 use spin::Mutex;
+use crate::vga_buffer::buffer::Buffer;
+use crate::vga_buffer::color::Color;
+use crate::vga_buffer::color_code::ColorCode;
+use crate::vga_buffer::writer::Writer;
 
 mod buffer;
 mod color;
 mod color_code;
 mod screen_char;
 mod writer;
-
-use crate::vga_buffer::buffer::Buffer;
-use crate::vga_buffer::color::Color;
-use crate::vga_buffer::color_code::ColorCode;
-use crate::vga_buffer::writer::Writer;
+#[cfg(test)]
+mod test;
 
 const BUFFER_HEIGHT: usize = 25;
 const BUFFER_WIDTH: usize = 80;
