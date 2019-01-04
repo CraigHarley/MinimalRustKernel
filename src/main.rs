@@ -1,7 +1,6 @@
 #![no_std]
 #![no_main]
 use core::panic::PanicInfo;
-use core::fmt::Write;
 
 mod vga_buffer;
 
@@ -12,6 +11,6 @@ fn panic(_info: &PanicInfo) -> ! {
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-//    println!("Hello World{}", "!");
+    println!("Hello World{}", "!");
     loop {}
 }
