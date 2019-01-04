@@ -1,21 +1,20 @@
+use core::fmt;
 use lazy_static::lazy_static;
 use spin::Mutex;
-use core::fmt;
 
-mod writer;
+mod buffer;
 mod color;
 mod color_code;
 mod screen_char;
-mod buffer;
+mod writer;
 
-use crate::vga_buffer::writer::Writer;
-use crate::vga_buffer::color_code::ColorCode;
-use crate::vga_buffer::color::Color;
 use crate::vga_buffer::buffer::Buffer;
+use crate::vga_buffer::color::Color;
+use crate::vga_buffer::color_code::ColorCode;
+use crate::vga_buffer::writer::Writer;
 
 const BUFFER_HEIGHT: usize = 25;
 const BUFFER_WIDTH: usize = 80;
-
 
 #[macro_export]
 macro_rules! print {
@@ -35,7 +34,7 @@ pub fn _print(args: fmt::Arguments) {
 }
 
 lazy_static! {
-    pub static ref WRITER: Mutex<Writer> = Mutex::new( Writer {
+    pub static ref WRITER: Mutex<Writer> = Mutex::new(Writer {
         column_position: 0,
         color_code: ColorCode::new(Color::Yellow, Color::Black),
         buffer: unsafe { &mut *(0xb8000 as *mut Buffer) },
