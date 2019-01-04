@@ -5,9 +5,13 @@ authors = ["Craig Harley <craigharley2@googlemail.com>"]
 edition = "2018"
 
 [dependencies]
+bootloader = "0.3.4"
 
 [profile.dev]
 panic = "abort"
 
 [profile.release]
 panic = "abort"
+
+[package.metadata.bootimage]
+default-target = "x86_64-blog_os.json"
