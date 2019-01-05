@@ -4,11 +4,14 @@
 use core::panic::PanicInfo;
 
 mod vga_buffer;
+mod serial;
 
 #[cfg(not(test))]
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
     println!("Hello World{}", "!");
+    serial_println!("Hello Host{}", "!");
+
     loop {}
 }
 

@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-bootimage run
+bootimage run -- -serial mon:stdio
